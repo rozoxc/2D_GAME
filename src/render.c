@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:28 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 23:15:12 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:09:47 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    load_image(t_game *game)
     game->imgs.floor = mlx_xpm_file_to_image(game->mlx, "../assets/base.xpm", &widht, &height);
 }
 
-void    render_map(t_game *game)
+int    render_map(t_game *game)
 {
     int x, y;
 
@@ -51,4 +51,5 @@ void    render_map(t_game *game)
     mlx_put_image_to_window(game->mlx, game->win, game->imgs.player, 
                            game->player_x * TILE_SIZE, 
                            game->player_y * TILE_SIZE);
+    return (0);
 }

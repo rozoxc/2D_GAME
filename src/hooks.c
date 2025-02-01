@@ -6,11 +6,12 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:20 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 23:15:55 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:05:57 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 
 int handle_keypress(int keycode, t_game *game)
 {
@@ -19,8 +20,8 @@ int handle_keypress(int keycode, t_game *game)
     moved = 0;
     if (keycode == KEY_ESC)
     {
-        mlx_loop_end(game->mlx);
-        return (0);
+        mlx_destroy_window(game->mlx, game->win); // Destroy the window
+        exit(0); // Exit the program
     }
     if (keycode == KEY_W || keycode == KEY_UP)
         moved = move_player(game, 0, -1);
@@ -42,7 +43,8 @@ int handle_keypress(int keycode, t_game *game)
 
 int handle_close(t_game *game)
 {
-    mlx_loop_end(game->mlx);
+    mlx_destroy_window(game->mlx, game->win); // Destroy the window
+    exit(0); // Exit the program
     return (0);
 }
 

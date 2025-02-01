@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 10:15:14 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 20:04:10 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:14:33 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,5 @@ int main(void)
 
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_loop(vars.mlx);
-
     return (0);
 }

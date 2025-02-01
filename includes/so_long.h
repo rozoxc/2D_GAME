@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:49:57 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 23:08:18 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 15:09:23 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int     parse_map(t_game *game, char *filename);
 void    setup_hooks(t_game *game);
 int     move_player(t_game *game, int dx, int dy);
 int     render_game(t_game *game);
+int handle_keypress(int keycode, t_game *game);
+int handle_close(t_game *game);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int	ft_lenght(char *s);
+int	ft_strcmp(char *s1, char *s2);
 #endif

@@ -11,8 +11,14 @@ SRC	= src/main.c \
 	src/game_logic.c \
 	utils/ft_strlcpy.c \
 	utils/ft_strlen.c \
+	utils/get_next_line.c \
+	utils/get_next_line_utils.c \
+	utils/ft_strcmp.c \
+
 HEADER = includes/so_long.h
+
 OBJ			= $(SRC:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -26,6 +32,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 

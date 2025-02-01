@@ -6,13 +6,25 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:39:31 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 22:58:53 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:17:08 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+int check_file(char *file)
+{
+    int				len;
 
+	len = ft_lenght(file);
+	if (file == 0)
+		return (0);
+	if (len < 5)
+		return (0);
+	if (ft_strcmp(file + len - 4, ".ber") != 0)
+		return (0);
+	return (1);
+}
 int init_game(t_game *game)
 {
     game->mlx = mlx_init();
@@ -28,7 +40,7 @@ int init_game(t_game *game)
     game->collectibles = 0;
     return (1);
 }
-static void free_map(t_map *map)
+void free_map(t_map *map)
 {
     int i;
 
@@ -63,6 +75,11 @@ int main(int ac, char **av)
     if (ac != 2)
     {
         printf("invalid argument !!!");
+        return (1);
+    }
+    if (check_file(av[1]) == 0)
+    {
+        printf("invlaid file !!\n");
         return (1);
     }
     if (parse_map(&game , av[1]) == 0)

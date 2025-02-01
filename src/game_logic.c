@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:17 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/01/31 22:37:00 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 10:07:10 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int move_player(t_game *game, int dx, int dy)
     {
         if (game->collectibles == game->total_collectibles)
         {
-            ft_printf("You won in %d moves!\n", game->moves + 1);
-            mlx_loop_end(game->mlx);
+            printf("You won in %d moves!\n", game->moves + 1);
+            mlx_destroy_window(game->mlx, game->win);
         }
         return (0);
     }
