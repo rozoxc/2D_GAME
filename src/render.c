@@ -6,25 +6,31 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:28 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/01 15:09:47 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 10:30:28 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void    load_image(t_game *game)
+int    load_image(t_game *game)
 {
     int widht;
     int height;
     
-    game->imgs.wall =  mlx_xpm_file_to_image(game->mlx, "../assets/walls/11zon_so-long-wall.xpm", &widht, &height);  
-    game->imgs.player = mlx_xpm_file_to_image(game->mlx, "../assets/player/11zon_so-long-player.xpm", &widht, &height);
-    game->imgs.collectible = mlx_xpm_file_to_image(game->mlx, "../assets/coins/11zon_so-long-coin.xpm", &widht, &height);
-    game->imgs.exit = mlx_xpm_file_to_image(game->mlx, "../assets/exit/11zon_so-long-exit.xpm", &widht, &height);
-    game->imgs.floor = mlx_xpm_file_to_image(game->mlx, "../assets/base.xpm", &widht, &height);
+    widht = 15;
+    height = 15;
+    game->imgs.wall =  mlx_xpm_file_to_image(game->mlx, "src/../assets/walls/11zon_so-long-wall.xpm", &widht, &height);  
+    game->imgs.player = mlx_xpm_file_to_image(game->mlx, "src/../assets/player/11zon_pacman-svgrepo-com.xpm", &widht, &height);
+    game->imgs.collectible = mlx_xpm_file_to_image(game->mlx, "src/../assets/coins/11zon_so-long-coin.xpm", &widht, &height);
+    game->imgs.exit = mlx_xpm_file_to_image(game->mlx, "src/../assets/exit/11zon_so-long-exit.xpm", &widht, &height);
+    game->imgs.floor = mlx_xpm_file_to_image(game->mlx, "src/../assets/base.xpm", &widht, &height);
+	if (!game->imgs.wall || !game->imgs.player || !game->imgs.collectible 
+        || !game->imgs.exit || !game->imgs.floor)
+        return (0);
+    return (1);
 }
 
-int    render_map(t_game *game)
+int    render_game(t_game *game)
 {
     int x, y;
 

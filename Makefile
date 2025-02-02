@@ -3,7 +3,6 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 MLX_DIR		= libs/minilibx_opengl_20191021
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-
 SRC	= src/main.c \
 	src/map_parser.c \
 	src/render.c \

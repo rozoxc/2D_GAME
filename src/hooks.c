@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:20 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/01 15:05:57 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 23:23:55 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int handle_keypress(int keycode, t_game *game)
     moved = 0;
     if (keycode == KEY_ESC)
     {
-        mlx_destroy_window(game->mlx, game->win); // Destroy the window
-        exit(0); // Exit the program
+        clean_game(game);
+        exit(0);
     }
     if (keycode == KEY_W || keycode == KEY_UP)
         moved = move_player(game, 0, -1);
@@ -36,15 +36,14 @@ int handle_keypress(int keycode, t_game *game)
     {
         game->moves++;
         printf("Moves: %d\n", game->moves);
-        render_game(game);
     }
     return (0);
 }
 
 int handle_close(t_game *game)
 {
-    mlx_destroy_window(game->mlx, game->win); // Destroy the window
-    exit(0); // Exit the program
+    clean_game(game);
+    exit(0);
     return (0);
 }
 

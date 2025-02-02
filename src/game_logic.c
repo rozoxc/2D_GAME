@@ -6,39 +6,56 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:17 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/01 10:07:10 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 21:39:49 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+static int is_valid_position(t_game *game, int x, int y)
+{
+    if (x < 0 || x >= game->map->width || y < 0 || y >= game->map->height)
+        return (0);
+    if (game->map->grid[y][x] == '1')
+        return (0);
+    return (1);
+}
+
+static void collect_item(t_game *game, int x, int y)
+{
+    game->collectibles++;
+    game->map->grid[y][x] = '0';
+}
+
+static int check_win_condition(t_game *game, int x, int y)
+{
+    if (game->map->grid[y][x] != 'E')
+        return (0);
+    
+    if (game->collectibles == game->total_collectibles)
+    {
+        printf("You won in %d moves!\n", game->moves + 1);
+        game->game_won = 1;
+        return (1);
+    }
+    return (0);
+}
+
 int move_player(t_game *game, int dx, int dy)
 {
-    int new_x = game->player_x + dx;
-    int new_y = game->player_y + dy;
+    int new_x;
+    int new_y;
 
-    if (new_x < 0 || new_x >= game->map->width ||
-        new_y < 0 || new_y >= game->map->height)
+    new_x = game->player_x + dx;
+    new_y = game->player_y + dy;
+
+    if (!is_valid_position(game, new_x, new_y))
         return (0);
 
-    char next_pos = game->map->grid[new_y][new_x];
-    if (next_pos == '1')
+    if (game->map->grid[new_y][new_x] == 'C')
+        collect_item(game, new_x, new_y);
+    else if (check_win_condition(game, new_x, new_y))
         return (0);
-
-    if (next_pos == 'C')
-    {
-        game->collectibles++;
-        game->map->grid[new_y][new_x] = '0';
-    }
-    else if (next_pos == 'E')
-    {
-        if (game->collectibles == game->total_collectibles)
-        {
-            printf("You won in %d moves!\n", game->moves + 1);
-            mlx_destroy_window(game->mlx, game->win);
-        }
-        return (0);
-    }
 
     game->player_x = new_x;
     game->player_y = new_y;
