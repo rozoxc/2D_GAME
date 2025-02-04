@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "../utils/get_next_line.h"
-# include "../printf/ft_printf.h"
+# include "../ft_printf/ft_printf.h"
 # define TILE_SIZE 32
 # define KEY_ESC 53
 # define KEY_W 13

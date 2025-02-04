@@ -2,7 +2,7 @@ NAME		= so_long
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS	=  -lmlx -framework OpenGL -framework AppKit
-FT_PRINTF_DIR = printf
+FT_PRINTF_DIR = ft_printf
 FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
 
 SRC	= src/main.c \
