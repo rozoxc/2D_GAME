@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:20 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/04 16:34:04 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:51:15 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	handle_keypress(int keycode, t_game *game)
 int	handle_close(t_game *game)
 {
 	clean_game(game);
-	exit(0);
 	return (0);
 }
 
