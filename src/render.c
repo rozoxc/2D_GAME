@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:28 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/08 14:47:07 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:07:26 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	load_image(t_game	*game)
 
 	widht = TILE_SIZE;
 	height = TILE_SIZE;
-	
 	game->imgs.wall = mlx_xpm_file_to_image(game->mlx,
 			"src/../textures/walls/11zon_so-long-wall.xpm", &widht, &height);
 	game->imgs.player = mlx_xpm_file_to_image(game->mlx,
@@ -35,7 +34,6 @@ int	load_image(t_game	*game)
 	if (!game->imgs.wall || !game->imgs.player || !game->imgs.collectible
 		|| !game->imgs.exit || !game->imgs.floor)
 	{
-		exit(1);
 		return (0);
 	}
 	return (1);

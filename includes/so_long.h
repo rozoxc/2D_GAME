@@ -89,4 +89,7 @@ int		validate_line_length(char *line, int width);
 int		open_map_file(char *filename, char ***grid, int height);
 int		check_horizontal_walls(t_game *game);
 int		check_vertical_walls(t_game *game);
+void	flood_fill(char **grid, int x, int y, t_game *game);
+int		validate_map_playability(t_game *game);
+
 #endif

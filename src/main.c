@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:39:31 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/04 16:28:54 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:24:22 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_game(t_game *game)
 	if (!game->mlx)
 		return (0);
 	game->win = mlx_new_window(game->mlx, game->map->width * 32,
-			game->map->height * 32, "1337_cat");
+			game->map->height * 32, "so_long");
 	if (!game->win)
 	{
 		free(game->mlx);
@@ -68,6 +68,7 @@ int	setup_game(t_game *game, char *file)
 	}
 	if (!load_image(game))
 	{
+		ft_printf("Can't load images !!!");
 		clean_game(game);
 		return (0);
 	}

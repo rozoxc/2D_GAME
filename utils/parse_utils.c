@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:53:53 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/04 18:35:58 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:31:56 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 int	check_map_char(char c, t_game *game, int i, int j)
 {
+	if (i >= game->map->height || j >= game->map->width)
+		return (0);
 	if (c == 'P')
 	{
 		game->player_count++;
 		game->player_x = j;
 		game->player_y = i;
-		return (1);
 	}
 	else if (c == 'E')
-	{
 		game->exit_count++;
-		return (1);
-	}
 	else if (c == 'C')
-	{
 		game->total_collectibles++;
-		return (1);
-	}
-	else if (c == '0' || c == '1')
-		return (1);
-	return (0);
+	else if (c != '0' && c != '1')
+		return (0);
+	return (1);
 }
 
 int	validate_line_length(char *line, int width)

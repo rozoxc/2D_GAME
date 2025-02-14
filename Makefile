@@ -19,7 +19,7 @@ SRC	= src/main.c \
 	utils/parse.c \
 	utils/parse_utils.c \
 
-HEADER = includes/so_long.h
+HEADER = includes/so_long.h ft_printf/ft_printf.h utils/get_next_line.h
 
 OBJ			= $(SRC:.c=.o)
 

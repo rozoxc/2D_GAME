@@ -6,7 +6,7 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:21:13 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/04 18:27:19 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:31:44 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ int	allocate_and_fill_map(char *filename, t_game *game)
 	int	fd;
 
 	fd = open_map_file(filename, &game->map->grid, game->map->height);
-	if (fd < 0)
+	if (fd < 0 || !game->map->grid)
 		return (0);
 	if (!fill_map_grid(fd, game))
+	{
+		free_grid(game->map->grid, game->map->height);
 		return (0);
+	}
 	close(fd);
 	return (1);
 }
@@ -67,7 +70,8 @@ int	parse_map(t_game *game, char *filename)
 		free(game->map);
 		return (0);
 	}
-	if (!validate_walls(game) || !validate_map_chars(game))
+	if (!validate_walls(game) || !validate_map_chars(game)
+		|| !validate_map_playability(game))
 	{
 		free_grid(game->map->grid, game->map->height);
 		free(game->map);

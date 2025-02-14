@@ -6,13 +6,13 @@
 /*   By: ababdoul <ababdoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 13:09:13 by ababdoul          #+#    #+#             */
-/*   Updated: 2025/02/04 16:09:59 by ababdoul         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:31:58 by ababdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	get_map_dimensions(char	*filename, t_game	*game)
+int	get_map_dimensions(char *filename, t_game *game)
 {
 	int		fd;
 	char	*line;
@@ -22,8 +22,9 @@ int	get_map_dimensions(char	*filename, t_game	*game)
 		return (0);
 	game->map->height = 0;
 	line = get_next_line(fd);
-	if (line)
-		game->map->width = ft_strlen(line) - 1;
+	if (line == NULL)
+		return (0);
+	game->map->width = ft_strlen(line) - 1;
 	while (line)
 	{
 		if (!validate_line_length(line, game->map->width))
@@ -80,11 +81,14 @@ void	free_grid(char	**grid, int height)
 	free(grid);
 }
 
-int	alloc_grid_row(t_game	*game, char	*line, int i)
+int	alloc_grid_row(t_game *game, char *line, int i)
 {
 	game->map->grid[i] = malloc(sizeof(char) * (game->map->width + 1));
 	if (!game->map->grid[i])
+	{
+		free_grid(game->map->grid, i);
 		return (0);
+	}
 	ft_strlcpy(game->map->grid[i], line, game->map->width + 1);
 	return (1);
 }
